@@ -10,7 +10,7 @@ from collections import defaultdict
 # ...*......
 
 
-def run(file='./test.txt'):
+def run(file='./input.txt'):
     total = 0
     symbols_in_line = list()
     symbols, digits = defaultdict(list), defaultdict(list)
@@ -45,19 +45,29 @@ def run(file='./test.txt'):
 
     print(symbols.values())
     for row, column in symbols.items():
-        # print(row)
-        # print(column)
+        print(column)
 
-        for x in column:
-            for t in digits.values():
-                print(t)
-                for y in t:
-                    if not x - 1 == y and not x + 1 == y and not x == y:
+        for i, x in enumerate(column):
+            for t in [-1, 0, 1]:
+                print(
+                    f'Iteration {i+t} for column {row}, with numbers {digits[row+t]}')
+                a = row + t
+                if a < 0 or a >= len(digits):
+                    continue
+                for y in digits[a]:
+                    start = y[0]-1
+                    if y[0] == 0:
+                        start = y[0]
+                    if x not in range(start, y[0] + len(y[1])+1):
+                        print("not found")
                         continue
+                    print(f'{y[1]} found for col {row}')
+                    total += int(y[1])
 
     print(total)
     return total
 
 
 if __name__ == "__main__":
-    run()
+    print("Did i get correct reults? " + str(run() == 4361))
+    print("Should be 4361")
