@@ -43,14 +43,9 @@ def run(file='./input.txt'):
         symbols[lines.index(line)] = symbols_in_line
         symbols_in_line = list()
 
-    print(symbols.values())
     for row, column in symbols.items():
-        # print(column)
         for i, x in enumerate(column):
-            # print(x)
             for t in [-1, 0, 1]:
-                # print(
-                #     f'Iteration {i+t} for column {row}, with numbers {digits[row+t]}')
                 a = row + t
                 if a < 0 or a >= len(digits):
                     continue
@@ -59,9 +54,7 @@ def run(file='./input.txt'):
                     if y[0] == 0:
                         start = y[0]
                     if x not in range(start, y[0] + len(y[1])+1):
-                        # print("not found")
                         continue
-                    # print(f'{y[1]} found for col {row}')
                     total += int(y[1])
 
     # Part two
@@ -81,8 +74,6 @@ def run(file='./input.txt'):
                         start = y[0]
                     if x not in range(start, y[0] + len(y[1])+1):
                         continue
-                    print(f'Found {y[1]}')
-                    print(f'Ratio: {gearratio}')
                     if not one:
                         gearratio = int(y[1])
                         one = True
@@ -93,7 +84,6 @@ def run(file='./input.txt'):
                     if one:
                         gearratio *= int(y[1])
                         two = True
-            print(f'Gears col: {gears}')
             if not two:
                 gearratio = 0
             gears += gearratio
