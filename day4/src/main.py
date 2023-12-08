@@ -1,6 +1,8 @@
 from collections import defaultdict
 import time
 
+# Solution by phase_rush
+
 
 def run(file="input.txt"):
     # Part two
