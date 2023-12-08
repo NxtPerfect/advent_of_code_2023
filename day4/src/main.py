@@ -12,8 +12,10 @@ def run(file="input.txt"):
             sample = sample.strip().split()
             winner = winner.strip().split()
 
+            # How many numbers we got right
             numb_intersections = len(set(winner).intersection(set(sample)))
 
+            # Add current's line score to line that's 1 and 1 for each number, further
             for update in range(numb_intersections):
                 count[idx+1+update] += count[idx]
 
