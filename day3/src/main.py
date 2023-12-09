@@ -1,13 +1,6 @@
 from collections import defaultdict
 
 
-# ......755.
-# ...$.*....
-# .664.598..
-# Gear ratio is calculated by multiplying two numbers that both touch the same symbol
-# Then i need to sum them all up
-
-
 def run(file='./input.txt'):
     total = 0
     gears = 0

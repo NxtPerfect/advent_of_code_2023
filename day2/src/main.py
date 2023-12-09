@@ -1,6 +1,4 @@
 def run():
-    # Game N: 3 X, 4 Y, 5Z; 2X\n
-    # Choose the fewest cubes to make the game possible
     total = 0
     totalsum = 0
     with open("./input.txt") as f:
@@ -27,8 +25,6 @@ def run():
                     if col == "blue" and int(num) > blue:
                         blue = int(num)
                         continue
-            # if red > 12 or green > 13 or blue > 14:
-            #     continue
             print(gameid)
             totalsum += red * green * blue
             total += int(gameid)
