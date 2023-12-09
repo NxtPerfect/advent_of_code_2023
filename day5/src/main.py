@@ -1,15 +1,7 @@
 import time
-
-# First we have the destination range start -> 50/52, then we have source range start -> 98/50
-# and then the length of that range -> 2/48
-# We have to find the **lowest** location number -> number after all the conversions
-# seed-to-soil map:
-# 50 98 2
-# 52 50 48
-
-# Store values in a set because you only can store unique entries, and it's sorted
-# Use two sets, one is more persistent, only holding full data once we encounter empty \n line
-# Another is temporary, holding values between conversions
+# ---------------------------
+# B R O K E N for part 2
+# ---------------------------
 
 
 def run(file="test.txt"):
