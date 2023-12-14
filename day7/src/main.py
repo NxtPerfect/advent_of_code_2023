@@ -1,42 +1,47 @@
 import time
 from collections import Counter
 
-order = {"A": 12, "K": 11, "Q": 10, "J": 9, "T": 8, "9": 7,
-         "8": 6, "7": 5, "6": 4, "5": 3, "4": 2, "3": 1, "2": 0}
+# order = {"A": 12, "K": 11, "Q": 10, "J": 9, "T": 8, "9": 7,
+#          "8": 6, "7": 5, "6": 4, "5": 3, "4": 2, "3": 1, "2": 0}
+order = {"A": 12, "K": 11, "Q": 10, "T": 9, "9": 8, "8": 7,
+         "7": 6, "6": 5, "5": 4, "4": 3, "3": 2, "2": 1, "J": 0}
+
+# Just add the jokers to the total count
 
 
-def run(file="input.txt"):
+def run(file="edge.txt"):
     total: int = 0
     totalCards: list = list()
     with open(file) as f:
         for idx, line in enumerate(f):
             cards, bet = line.strip().split(" ")
+            jokers = cards.count('J')
+            cards.replace('J', '')
             lettersCounted: Counter = Counter(char for char in cards)
             for char in lettersCounted.most_common():
-                if char[1] == 5:
+                if char[1] + jokers == 5:
                     totalCards.append(tuple((cards, int(bet), 6)))
                     break
-                if char[1] == 4:
+                if char[1] + jokers == 4:
                     totalCards.append(tuple((cards, int(bet), 5)))
                     break
-                if char[1] == 3 and len(lettersCounted) == 2:
+                if char[1] + jokers == 3 and len(lettersCounted) == 2:
                     totalCards.append(tuple((cards, int(bet), 4)))
                     break
-                if char[1] == 3:
+                if char[1] + jokers == 3:
                     totalCards.append(tuple((cards, int(bet), 3)))
                     break
-                if char[1] == 2 and len(lettersCounted) == 3:
+                if char[1] == 2 and (jokers or len(lettersCounted) == 3):
                     totalCards.append(tuple((cards, int(bet), 2)))
                     break
-                if char[1] == 2:
+                if char[1] == 2 or jokers:
                     totalCards.append(tuple((cards, int(bet), 1)))
                     break
-                if char[1] == 1:
-                    totalCards.append(tuple((cards, int(bet), 0)))
-                    break
+                totalCards.append(tuple((cards, int(bet), 0)))
+                break
             # print(totalCards)
         sorted_list = sorted(totalCards, key=lambda x: x[2], reverse=True)
-        # print("Sorted list:", sorted_list)
+        print("Sorted list:", sorted_list)
         i = 0
         while i < len(sorted_list)-1:
             x = sorted_list[i]
@@ -73,7 +78,8 @@ if __name__ == "__main__":
     start = time.perf_counter_ns()
     minimum = run()
     # print(minimum == 6440) # test
-    print(minimum == 6592)  # edge
-    # print(minimum == 6839) # part 2
+    # print(minimum == 6592)  # edge
+    # print(minimum == 5905)  # test part 2
+    print(minimum == 6839)  # edge part 2
     end = time.perf_counter_ns()
     print("Runtime of " + str((end-start)/1000000) + "ms")
