@@ -28,3 +28,8 @@
 - [ ] day 28
 - [ ] day 29
 - [ ] day 30
+
+Completed: 8
+Skipped: 3
+Partly finished: 1
+Total: 30
