@@ -10,9 +10,9 @@
 - [>] day 10
 - [x] day 11
 - [>] day 12
-- [ ] day 13
-- [ ] day 14
-- [ ] day 15
+- [>] day 13
+- [>] day 14
+- [x] day 15
 - [ ] day 16
 - [ ] day 17
 - [ ] day 18
@@ -29,7 +29,7 @@
 - [ ] day 29
 - [ ] day 30
 
-Completed: 8
-Skipped: 3
+Completed: 9
+Skipped: 5
 Partly finished: 1
 Total: 30
